@@ -3,13 +3,14 @@ import importlib
 class Bot():
     ROUTES = []
 
-    def __init__(self):
+    def __init__(self, client):
         from config import MODULES, MIDDLEWARE
         for m in MODULES:
             module = importlib.import_module(m)
             self.ROUTES += [route + (module,) for route in module.ROUTES]
 
-        self.middleware = importlib.import_module(MIDDLEWARE)
+        middleware = importlib.import_module(MIDDLEWARE)
+        self.middleware = middleware.Middleware(client)
 
     def _process_message(self, message):
         return self.middleware.process_message(message)
