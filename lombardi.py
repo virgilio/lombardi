@@ -30,6 +30,9 @@ class Bot():
 
     def handle_message (self, payload):
         payload = self._process_message(payload)
+        if payload is None:
+            return False
+
         (regex, what_to_answer, what_to_do, module) = \
             self._choose_response(payload.message)
         if module is not None:
