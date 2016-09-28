@@ -15,7 +15,7 @@ class Middleware():
         if message.has_key("text"):
             obj.message = message["text"]
         else:
-            obj.message = message
+            obj.message = str(message)
 
         result = obj()
 

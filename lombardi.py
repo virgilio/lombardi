@@ -8,7 +8,8 @@ class Bot():
         from config import MODULES, MIDDLEWARE
         for m in MODULES:
             module = importlib.import_module(m)
-            self.ROUTES += [route + (module,) for route in module.ROUTES]
+
+            self.ROUTES += [(re.compile(route[0], re.U),) + route[1:3] + (module,) for route in module.ROUTES]
 
         middleware = importlib.import_module(MIDDLEWARE)
         self.middleware = middleware.Middleware(client)
@@ -18,7 +19,10 @@ class Bot():
 
     def _choose_response(self, message):
         for route in self.ROUTES:
-            if "Oi" in str(message):
+            prog = route[0]
+            if prog.match(message):
+                return route
+            elif prog.search(message):
                 return route
         return (None, None, None, None)
 
