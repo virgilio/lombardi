@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from lombardi import Bot
 from config import SLACK_TOKEN as token
 from slackclient import SlackClient

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 ROUTES = [
     (r'*', "default_response", "default_work"),
     (r'mah oe', "default_response", "default_work")

@@ -1,4 +1,5 @@
-import importlib
+# -*- coding: utf-8 -*-
+import importlib, re
 
 class Bot():
     ROUTES = []

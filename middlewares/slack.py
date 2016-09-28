@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from config import SLACK_USER as user
 
 class Middleware():
@@ -6,7 +7,6 @@ class Middleware():
         self.sc = sc
 
     def process_message(self, message):
-        # if message.has_key("user") and message["user"] == "U2H6221EG":
         if message.has_key("user") and message["user"] == user:
             return None
 
